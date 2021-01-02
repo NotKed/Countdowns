@@ -6,12 +6,19 @@
 //
 
 import SwiftUI
+import CoreData
 
 @main
 struct CountdownsApp: App {
+    
+    let persistanceContainer = PersistanceController.shared
+    
     var body: some Scene {
         WindowGroup {
             ContentView()
+                .environment(\.managedObjectContext, persistanceContainer.container.viewContext)
         }
     }
+    
+    
 }
