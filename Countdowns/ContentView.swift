@@ -14,14 +14,14 @@ struct ContentView: View {
     @FetchRequest(sortDescriptors: [])
     private var countdowns: FetchedResults<Countdown>
     
-    @State private var isExpanded: Bool = false
-    
     var body: some View {
         NavigationView {
             List {
-                ForEach(countdowns) { countdown in
-                    DisclosureGroup(countdown.name!, isExpanded: $isExpanded) {
-                        
+                ForEach(countdowns) { (countdown: Countdown) in
+                    DisclosureGroup(countdown.name ?? "Untitled") {
+                        VStack() {
+                            
+                        }
                     }
                 }.onDelete(perform: deleteTasks)
             }
